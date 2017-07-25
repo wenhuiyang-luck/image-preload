@@ -2,8 +2,9 @@
 
 浏览前预加载图片，使用jQuery封装插件。
 
-- 案例展示：[【预览地址】]()
-  - 图片无序/无序预加载，翻页展示，loading显示百分比进度。
+案例展示：[【预览地址】](https://wenhuiyang-luck.github.io/image-preload/)
+
+图片无序/无序预加载，翻页展示，loading显示百分比进度。
 
 ### 初始化代码
 ```js
@@ -20,9 +21,9 @@ function PreLoad(imgs, options) {
 ### 默认参数配置
 ```js
 PreLoad.DEFAULTS = {
-	order: 'unordered',   // 无序预加载
-	each: null,           // 每一张图片加载完毕后执行
-	all: null             // 所有图片加载完毕后执行
+  order: 'unordered',   // 无序预加载
+  each: null,           // 每一张图片加载完毕后执行
+  all: null             // 所有图片加载完毕后执行
 };
 ```
 ### 有序加载代码
@@ -90,8 +91,9 @@ $.extend({
 
 ### 调用
 ```js
+// 自定义参数
 $.preload(imgs, {
-  order: 'unordered',       // 自定义加载顺序
+  order: 'unordered',       // 加载顺序
   each: function(count) {
     $progress.html(Math.round((count+1)/len *100)+'%');  // 每加载一张图片改变loading百分比
   },
