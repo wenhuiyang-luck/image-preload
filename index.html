@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>图片预加载</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="box">
+		<img src="http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1210/08/c1/14307187_1349676294934.jpg" alt="pic" id="img" width="800px" height="450px" />
+		<p>
+			<a href="javascript:;" class="btn" data-control="prev">上一页</a>
+			<a href="javascript:;" class="btn" data-control="next">下一页</a>
+		</p>
+	</div>
+
+	<div class="loading">
+		<p class="progress">0%</p>
+	</div>
+
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/preload.js"></script>
+	<script>		
+	    var imgs = [
+	    	'http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1210/08/c1/14307187_1349676294934.jpg',
+	    	"http://img3.iqilu.com/data/attachment/forum/201308/21/175424l27wngnjf2o2onu2.jpg",
+	    	'http://image.fantuanpu.com/upfile/upload/image/20140412/41211080781.jpg',
+	    	'http://b.zol-img.com.cn/desk/bizhi/image/2/960x600/1366012999441.jpg',
+	    	'http://g.hiphotos.baidu.com/zhidao/pic/item/f636afc379310a55e56a74deb24543a982261049.jpg',
+	    	'http://file.mumayi.com/forum/201305/16/171333b0touztzyu08uykr.jpg',
+	    	'http://p16.qhimg.com/bdr/__/d/_open360/fj0905/14.jpg',
+	    	'http://p17.qhimg.com/bdr/__/d/_open360/fengjing0508/11.jpg',
+	    	'http://pic1.5442.com/2015/0728/01/01.jpg'
+	    ];
+
+	    var index = 0,
+	        len = imgs.length,
+	        $progress = $('.progress');
+
+	    $.preload(imgs, {
+	    	order: 'unordered',  // 自定义加载顺序
+	    	each: function(count) {
+	    		$progress.html(Math.round((count+1)/len *100)+'%');
+	    	},
+	    	all: function() {
+	    		$('.loading').hide();
+	            document.title = '1/'+len;
+	    	}
+	    });
+
+	    $('.btn').on('click', function () {
+	        if ($(this).data('control') === 'prev') {   // 上一张
+	            index = Math.max(0,--index);
+	        } 
+	        else {                                      // 下一张
+	            index = Math.min(len-1,++index);
+	        }
+	        document.title = (index + 1)+'/'+ len;
+	        $('#img').attr('src',imgs[index]);
+	    });
+	</script>
+</body>
+
+</html>

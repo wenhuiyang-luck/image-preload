@@ -1,0 +1,36 @@
+a {
+	text-decoration: none;
+}
+.box {
+	text-align: center;
+	margin-top: 100px;
+	overflow: hidden;
+}
+.btn {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	padding: 0 10px;
+	color: #333;
+}
+.btn:first-child {
+	margin-right: 50px;
+}
+.btn:hover {
+	background-color: #ddd;
+}
+.loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #eee;
+	text-align: center;		
+	font-size: 30px;
+}
+.progress {
+	margin-top: 300px;
+}
